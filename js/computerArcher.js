@@ -10,7 +10,7 @@ class ComputerArcher
             isStatic:true
         }
         this.body=Bodies.rectangle(x,y,width,height,options)
-        this.image=loadImage("./assets/compterArcher.png")
+        this.image=loadImage("assets/compterArcher.png")
         World.add(world,this.body)
     }
     display()

@@ -9,7 +9,7 @@ var player, playerBase;
 var computer, computerBase;
 var  computerArcher;
 var playerArcher;
-var arrow;
+var playerArrow, computerArrow;
 
 
 function setup() {
@@ -40,7 +40,7 @@ function setup() {
   playerArcher = new PlayerArcher(width - 1040,playerBase.body.position.y - 180,120,120);
   
   //Create an arrow Object
-  
+  playerArrow = new PlayerArrow(width - 1040,playerBase.body.position.y - 180,50,10)
   
 }
 
@@ -66,7 +66,10 @@ function draw() {
   playerArcher.display();
   computerArcher.display();
 
+
+
   //Display arrow();
+  playerArrow.display();
   
   //if Space (32) key is pressed call shoot function of playerArrow
   if(keyCode === 32){
