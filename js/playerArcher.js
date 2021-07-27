@@ -1,31 +1,40 @@
-class PlayerArcher
-{
-    constructor(x,y,width,height,angle)
-    {
-        this.x=x
-        this.y=y
-        this.height=height
-        this.width=width
-        this.angle=angle
-        this.image=loadImage("assets/playerArcher.png")
+class PlayerArcher {
+    constructor(x, y, width, height) {
+      const options = {
+        isStatic: true
+      };
+  
+      this.body = Matter.Bodies.rectangle(x, y, width, height, options);
+      this.width = width;
+      this.height = height;
+      //this.collapse = false;
+      this.image = loadImage("assets/playerArcher.png");
+  
+      World.add(world, this.body);
+  
+      Matter.Body.setAngle(this.body, -PI / 2); // -90 degree
     }
-    display()
-    {
-        if(keyIsDown(RIGHT_ARROW) && this.angle<0.35)
-        {
-            this.angle+=0.02
-        }
-
-        if(keyIsDown(LEFT_ARROW) && this.angle>-1.45)
-        {
-            this.angle-=0.02
-        }
-        push ()
-        translate (this.x,this.y)
-        rotate (this.angle)
-        rect(-20,-30,this.width,this.height)
-        imageMode(CENTER)
-        image(this.image,0,0,width,height)
-        pop ()
+  
+    display() {
+      var pos = this.body.position;
+      var angle = this.body.angle;
+      
+      if (keyIsDown(DOWN_ARROW) && angle < -1.2) {
+        angle += 0.01;
+        Matter.Body.setAngle(this.body, angle);
+      }
+  
+      if (keyIsDown(UP_ARROW) && angle > -1.9) {
+        angle -= 0.01;
+        Matter.Body.setAngle(this.body, angle);
+      }
+      
+      push();
+      translate(pos.x, pos.y);
+      rotate(angle);
+      imageMode(CENTER);
+      image(this.image, 0, 0, 100, 100);
+      pop();
     }
-}
+  }
+  

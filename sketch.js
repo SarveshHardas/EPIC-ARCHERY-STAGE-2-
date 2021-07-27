@@ -5,7 +5,7 @@ const Constraint = Matter.Constraint;
 
 var engine, world;
 var canvas;
-var palyer, playerBase;
+var player, playerBase;
 var computer, computerBase;
 var playerArcher, computerArcher;
 var arrow;
@@ -17,7 +17,7 @@ function setup() {
   engine = Engine.create();
   world = engine.world;
 
-  playerBase = new PlayerBase(300, random(450, height - 300), 180, 150);
+  playerBase = new PlayerBase(300, 415, 180, 150);
   player = new Player(285, playerBase.body.position.y - 153, 50, 180);
  
   //Create Player Archer Object
@@ -42,14 +42,14 @@ function setup() {
   );
 
   playerArcher = new PlayerArcher(
-    300,
+    340,
     playerBase.body.position.y - 180,
-    60,
-    60,this.angle
+    120,
+    120
   );
+  console.log(player.y)
   
-  //Create an arrow Object
-  arrow = new PlayerArrow(playerArcher.x,playerArcher.y)
+  arrow = new PlayerArrow(-650,playerBase.body.position.y - 180,50,10)
 }
 
 function draw() {
@@ -76,7 +76,7 @@ function draw() {
   //if Space (32) key is pressed call shoot function of playerArrow
   if(keyCode === 32)
   {
-    arrow.shoot();
+    arrow.shoot(playerArcher.body.angle);
   }
 }
 
