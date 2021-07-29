@@ -49,7 +49,7 @@ function setup() {
   );
   console.log(player.y)
   
-  arrow = new PlayerArrow(-650,playerBase.body.position.y - 180,50,10)
+  arrow = new PlayerArrow(-675,playerBase.body.position.y - 375.5,50,10)
 }
 
 function draw() {
@@ -77,6 +77,7 @@ function draw() {
   if(keyCode === 32)
   {
     arrow.shoot(playerArcher.body.angle);
+   
   }
 }
 
