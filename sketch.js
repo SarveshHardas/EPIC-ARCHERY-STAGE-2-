@@ -71,15 +71,15 @@ function draw() {
   playerArcher.display();
   computerArcher.display()
   arrow.display();
-  
 
-  //if Space (32) key is pressed call shoot function of playerArrow
-  if(keyCode === 32)
+}
+
+function keyPressed()
+  {
+    if(keyCode === 32)
   {
     arrow.shoot(playerArcher.body.angle);
    
   }
-}
-
-
+  }
 
